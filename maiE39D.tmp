@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6sbdahe2pxms"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_30jhq"]
+[ext_resource type="PackedScene" uid="uid://lj6d3q53kmuh" path="res://witch.tscn" id="1_jw3um"]
+[ext_resource type="PackedScene" uid="uid://dcseykuyw4gx" path="res://ennemy.tscn" id="2_khoie"]
+[ext_resource type="Texture2D" uid="uid://dvlu8g2qwip7u" path="res://level_background.png" id="4_8d3ve"]
+[ext_resource type="PackedScene" uid="uid://vqsj832xcsqq" path="res://gem.tscn" id="4_tbpal"]
+[ext_resource type="PackedScene" uid="uid://ds20q0c6pq0ju" path="res://hud.tscn" id="5_scm1p"]
+[ext_resource type="PackedScene" uid="uid://d5yry452dsj0" path="res://gameover.tscn" id="7_2beiq"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_30jhq")
+enemy_scene = ExtResource("2_khoie")
+gem_scene = ExtResource("4_tbpal")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1464, 1328)
+scale = Vector2(3.80383, 3.45618)
+texture = ExtResource("4_8d3ve")
+
+[node name="witch" parent="." instance=ExtResource("1_jw3um")]
+
+[node name="spawn" type="Marker2D" parent="."]
+position = Vector2(612, 275)
+
+[node name="hud" parent="." instance=ExtResource("5_scm1p")]
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="gameover" parent="." instance=ExtResource("7_2beiq")]
+
+[node name="fire timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="play_again" from="gameover" to="." method="_on_gameover_play_again"]
+[connection signal="timeout" from="fire timer" to="." method="_on_fire_timer_timeout"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq5b7c1k7fl1i"]
+
+[ext_resource type="Script" path="res://bubble_gun.gd" id="1_60i3l"]
+[ext_resource type="PackedScene" uid="uid://ban2qfj2sfb8e" path="res://bubble.tscn" id="2_c1r3i"]
+[ext_resource type="AudioStream" uid="uid://mir82xoidk0e" path="res://weapons/buuble basss.wav" id="3_fmoc1"]
+
+[node name="bubble_gun" type="Node"]
+script = ExtResource("1_60i3l")
+bubble_scene = ExtResource("2_c1r3i")
+
+[node name="position" type="Marker2D" parent="."]
+position = Vector2(112, 90)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fmoc1")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

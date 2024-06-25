@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6sbdahe2pxms"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_30jhq"]
+[ext_resource type="PackedScene" uid="uid://lj6d3q53kmuh" path="res://witch.tscn" id="1_jw3um"]
+[ext_resource type="PackedScene" uid="uid://dcseykuyw4gx" path="res://ennemy.tscn" id="2_khoie"]
+[ext_resource type="PackedScene" uid="uid://vqsj832xcsqq" path="res://gem.tscn" id="4_tbpal"]
+[ext_resource type="PackedScene" uid="uid://ds20q0c6pq0ju" path="res://hud.tscn" id="5_scm1p"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_30jhq")
+enemy_scene = ExtResource("2_khoie")
+gem_scene = ExtResource("4_tbpal")
+
+[node name="witch" parent="." instance=ExtResource("1_jw3um")]
+
+[node name="spawn" type="Marker2D" parent="."]
+position = Vector2(612, 275)
+
+[node name="hud" parent="." instance=ExtResource("5_scm1p")]

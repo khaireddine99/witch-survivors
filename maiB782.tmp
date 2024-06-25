@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6sbdahe2pxms"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_30jhq"]
+[ext_resource type="PackedScene" uid="uid://lj6d3q53kmuh" path="res://witch.tscn" id="1_jw3um"]
+[ext_resource type="PackedScene" uid="uid://dcseykuyw4gx" path="res://ennemy.tscn" id="2_khoie"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_30jhq")
+
+[node name="witch" parent="." instance=ExtResource("1_jw3um")]
+
+[node name="ennemy" parent="." instance=ExtResource("2_khoie")]
+position = Vector2(621, 184)

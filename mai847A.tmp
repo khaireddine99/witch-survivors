@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6sbdahe2pxms"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_30jhq"]
+[ext_resource type="PackedScene" uid="uid://lj6d3q53kmuh" path="res://witch.tscn" id="1_jw3um"]
+[ext_resource type="PackedScene" uid="uid://dcseykuyw4gx" path="res://ennemy.tscn" id="2_khoie"]
+[ext_resource type="Texture2D" uid="uid://dvlu8g2qwip7u" path="res://level_background.png" id="4_8d3ve"]
+[ext_resource type="PackedScene" uid="uid://bflj7iviw8qr3" path="res://weapons/summon.tscn" id="4_ksba4"]
+[ext_resource type="PackedScene" uid="uid://bik2yf7cbpyxd" path="res://gem.tscn" id="4_tbpal"]
+[ext_resource type="PackedScene" uid="uid://ds20q0c6pq0ju" path="res://hud.tscn" id="5_scm1p"]
+[ext_resource type="PackedScene" uid="uid://ban2qfj2sfb8e" path="res://bubble.tscn" id="5_uwttq"]
+[ext_resource type="PackedScene" uid="uid://d5yry452dsj0" path="res://gameover.tscn" id="7_2beiq"]
+[ext_resource type="PackedScene" uid="uid://dy7ow80tmbed1" path="res://levelup.tscn" id="8_ogx64"]
+[ext_resource type="AudioStream" uid="uid://bqx6t30nol0me" path="res://Phyrnna - Weshdoor Concert.mp3" id="11_25hff"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_30jhq")
+enemy_scene = ExtResource("2_khoie")
+gem_scene = ExtResource("4_tbpal")
+summon_scene = ExtResource("4_ksba4")
+bubble_scene = ExtResource("5_uwttq")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1464, 1328)
+scale = Vector2(3.80383, 3.45618)
+texture = ExtResource("4_8d3ve")
+
+[node name="witch" parent="." instance=ExtResource("1_jw3um")]
+
+[node name="spawn" type="Marker2D" parent="."]
+position = Vector2(612, 275)
+
+[node name="hud" parent="." instance=ExtResource("5_scm1p")]
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="gameover" parent="." instance=ExtResource("7_2beiq")]
+
+[node name="fire timer" type="Timer" parent="."]
+autostart = true
+
+[node name="levelup" parent="." instance=ExtResource("8_ogx64")]
+
+[node name="bubble_timer" type="Timer" parent="."]
+autostart = true
+
+[node name="game_timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_25hff")
+autoplay = true
+
+[connection signal="witch_level_up" from="witch" to="." method="_on_witch_witch_level_up"]
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="play_again" from="gameover" to="." method="_on_gameover_play_again"]
+[connection signal="timeout" from="fire timer" to="." method="_on_fire_timer_timeout"]
+[connection signal="done" from="levelup" to="." method="_on_levelup_done"]
+[connection signal="timeout" from="bubble_timer" to="." method="_on_bubble_timer_timeout"]

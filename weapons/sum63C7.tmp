@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bflj7iviw8qr3"]
+
+[ext_resource type="Texture2D" uid="uid://dmjgp6l4xetfx" path="res://bubble.png" id="1_2j7ky"]
+[ext_resource type="Script" path="res://weapons/summon.gd" id="1_ugatq"]
+
+[node name="summon" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_ugatq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(133.333, 69)
+texture = ExtResource("1_2j7ky")
+
+[node name="position" type="Marker2D" parent="."]
+position = Vector2(190, 101)
+rotation = -1.67552
+
+[node name="target" type="Marker2D" parent="position"]
+position = Vector2(29.3333, -3.33333)

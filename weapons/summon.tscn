@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://bflj7iviw8qr3"]
+
+[ext_resource type="Script" path="res://weapons/summon.gd" id="1_ugatq"]
+[ext_resource type="Texture2D" uid="uid://cgro5ciavblap" path="res://weapons/Wisp.png" id="2_li6hf"]
+
+[sub_resource type="Animation" id="Animation_qkf27"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4pvep"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jp42d"]
+_data = {
+"RESET": SubResource("Animation_qkf27"),
+"idle": SubResource("Animation_4pvep")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cwqqj"]
+radius = 13.0724
+
+[node name="summon" type="CharacterBody2D" groups=["summons"]]
+scale = Vector2(3, 3)
+disable_mode = 1
+collision_layer = 16
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_ugatq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_li6hf")
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jp42d")
+}
+autoplay = "idle"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(10, 0)
+
+[node name="collisionShape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(2, 3.66667)
+shape = SubResource("CircleShape2D_cwqqj")
+metadata/_edit_group_ = true

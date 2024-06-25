@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://d5yry452dsj0"]
+
+[ext_resource type="FontFile" uid="uid://drm8ab63ifxro" path="res://Kenney Bold.ttf" id="1_4s4sl"]
+[ext_resource type="Script" path="res://gameover.gd" id="1_qavuv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hkovi"]
+font_size = 50
+
+[node name="gameover" type="CanvasLayer"]
+script = ExtResource("1_qavuv")
+
+[node name="color" type="ColorRect" parent="."]
+offset_right = 1290.0
+offset_bottom = 734.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = 79.5
+offset_right = 139.0
+offset_bottom = 200.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_4s4sl")
+text = "play again"
+
+[node name="message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -334.5
+offset_top = -166.5
+offset_right = 334.5
+offset_bottom = -25.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "Your score is : 20
+
+"
+label_settings = SubResource("LabelSettings_hkovi")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,245 @@
+[gd_scene load_steps=14 format=3 uid="uid://dcseykuyw4gx"]
+
+[ext_resource type="Texture2D" uid="uid://bvt364ube45vj" path="res://Bat_Sprite_Sheet.png" id="1_1x813"]
+[ext_resource type="Script" path="res://ennemy.gd" id="1_6r41y"]
+[ext_resource type="Shader" uid="uid://c718cb6umeax0" path="res://ennemy.tres" id="2_ehce7"]
+[ext_resource type="Texture2D" uid="uid://dnoj3xmj5aj2a" path="res://health.png" id="3_0xd4f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_no7re"]
+resource_local_to_scene = true
+shader = ExtResource("2_ehce7")
+shader_parameter/enabled_ = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_yvv74"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:vframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("1_1x813")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wd4ht"]
+resource_name = "death"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [11, 12, 13, 14, 14]
+}
+
+[sub_resource type="Animation" id="Animation_vvmje"]
+resource_name = "move"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5, 6, 7, 8, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_1x813")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hf2wj"]
+_data = {
+"RESET": SubResource("Animation_yvv74"),
+"death": SubResource("Animation_wd4ht"),
+"move": SubResource("Animation_vvmje")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho2yh"]
+size = Vector2(68, 52)
+
+[sub_resource type="Animation" id="Animation_s10kx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled_")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kdm8g"]
+resource_name = "hit flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled_")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ocb30"]
+_data = {
+"RESET": SubResource("Animation_s10kx"),
+"hit flash": SubResource("Animation_kdm8g")
+}
+
+[node name="ennemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 30
+motion_mode = 1
+safe_margin = 0.001
+script = ExtResource("1_6r41y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["bats"]]
+material = SubResource("ShaderMaterial_no7re")
+scale = Vector2(5, 5)
+texture = ExtResource("1_1x813")
+hframes = 5
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hf2wj")
+}
+autoplay = "move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-2, -22)
+shape = SubResource("RectangleShape2D_ho2yh")
+
+[node name="health_bar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -30.0
+offset_right = 34.0
+offset_bottom = 38.0
+value = 100.0
+texture_progress = ExtResource("3_0xd4f")
+
+[node name="aim" type="Marker2D" parent="."]
+visible = false
+position = Vector2(134, 66)
+
+[node name="particles" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(-1, -19)
+emitting = false
+amount = 15
+one_shot = true
+explosiveness = 0.8
+randomness = 0.12
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 3.0
+scale_amount_max = 10.0
+metadata/_edit_group_ = true
+
+[node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ocb30")
+}
+
+[node name="collision_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="collision_timer" to="." method="_on_collision_timer_timeout"]

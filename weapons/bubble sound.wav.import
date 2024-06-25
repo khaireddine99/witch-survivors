@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cuxgr5nx7mseu"
+path="res://.godot/imported/bubble sound.wav-c27ccfbec7532a09040dae256dc02c33.sample"
+
+[deps]
+
+source_file="res://weapons/bubble sound.wav"
+dest_files=["res://.godot/imported/bubble sound.wav-c27ccfbec7532a09040dae256dc02c33.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

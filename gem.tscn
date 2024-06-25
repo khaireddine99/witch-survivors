@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bik2yf7cbpyxd"]
+
+[ext_resource type="Texture2D" uid="uid://dcjd13t1a6t5c" path="res://gem .png" id="1_ka11y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qa07x"]
+radius = 9.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ka11y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qa07x")

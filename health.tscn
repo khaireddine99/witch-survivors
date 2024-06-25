@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bghkvka4shbmo"]
+
+[ext_resource type="Texture2D" uid="uid://wk2upy273hpj" path="res://bar_bg.png" id="1_rw5ip"]
+[ext_resource type="Texture2D" uid="uid://dnoj3xmj5aj2a" path="res://health.png" id="2_db2d5"]
+[ext_resource type="Script" path="res://health.gd" id="3_lhl8g"]
+
+[node name="hud" type="TextureProgressBar"]
+offset_right = 80.0
+offset_bottom = 40.0
+scale = Vector2(4, 4)
+value = 100.0
+texture_under = ExtResource("1_rw5ip")
+texture_progress = ExtResource("2_db2d5")
+texture_progress_offset = Vector2(8, 0)
+script = ExtResource("3_lhl8g")

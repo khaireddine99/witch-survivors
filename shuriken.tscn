@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp32w8yuewvmk"]
+
+[ext_resource type="Script" path="res://shuriken.gd" id="1_2hrvj"]
+[ext_resource type="Texture2D" uid="uid://bjfqq1tyj5kko" path="res://weapons/shuriken.png" id="1_rlqtw"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(123, 65)
+script = ExtResource("1_2hrvj")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rlqtw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
